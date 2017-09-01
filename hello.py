@@ -17,11 +17,12 @@ def dprint(message):
 
 #Simple function with no specific purpose
 def main():
-    dprint("This message is for debugging purposes")
-    for i in range(4):
-        #Hmmmm, ideally we don't want a space between (i + 1) and the "!"
-        #GH! Why does Python automatically add spaces?
-        print("Hello instructor", i + 1, "!")
-        print("Good bye!")
+  iUsr = eval(input("Gimme a number! Not too little, not too big... "))
+  dprint("This message is for debugging purposes")
+  for i in range(iUsr):
+    #Hmmmm, ideally we don't want a space between (i + 1) and the "!"
+    #GH! Why does Python automatically add spaces?
+    print("Hello instructor", i + 1, "!")
+    print("Good bye!")
     dprint("End")
 main()
