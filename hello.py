@@ -18,6 +18,10 @@ def dprint(message):
 #Simple function with no specific purpose
 def main():
     dprint("This message is for debugging purposes")
-    print("Hello instructor!")
-    print("Good bye!")
+    for i in range(4):
+        #Hmmmm, ideally we don't want a space between (i + 1) and the "!"
+        #GH! Why does Python automatically add spaces?
+        print("Hello instructor", i + 1, "!")
+        print("Good bye!")
+    dprint("End")
 main()
