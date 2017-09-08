@@ -7,7 +7,8 @@ def main():
 
     #Hm, eval(input()) doesn't seem to like strings
     i = input("1 or 2? ")
-    if not(str(i) == i):
+    #We need to check if the user input is a digit or a letter, that's our main issue
+    if not(str(i) == float(i)): #Doesn't work. i is already a string due to input. 
         eval(input(i))
     nou = input("Enter a noun: ")
     ver = input("Enter a verb: ")
@@ -18,7 +19,7 @@ def main():
     #That's what it is. WAH! WAH! Python no WORK!
     #i = float(i) or 0 #Darn. This doesn't seem to work. Such a shame :(
     if (str(i) == i):
-        print("You think you're smart ya", adj, nou, "go", ver, "off in yur", pla + ". Bleh!")
+        print("You think you're smart ya", adj, nou, "go", ver, "off to yur", pla + ". Bleh!")
     else:    
         print("The", adj, nou, "likes to", ver, "at the", pla, "by the by.")
     print("Go home!")
