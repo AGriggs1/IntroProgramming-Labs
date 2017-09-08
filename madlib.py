@@ -9,7 +9,7 @@ def main():
     i = input("1 or 2? ")
     #We need to check if the user input is a digit or a letter, that's our main issue
     if not(str(i) == float(i)): #Doesn't work. i is already a string due to input. 
-        eval(input(i))
+        eval(i)
     nou = input("Enter a noun: ")
     ver = input("Enter a verb: ")
     adj = input("Enter an adjective: " )
