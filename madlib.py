@@ -17,7 +17,7 @@ def main():
     #This I hoped would catch none digits, if it worked, that's what I wanted to see, but uh, see above complaint.
     #That's what it is. WAH! WAH! Python no WORK!
     #i = float(i) or 0 #Darn. This doesn't seem to work. Such a shame :(
-    if (i == 0):
+    if (str(i) == i):
         print("You think you're smart ya", adj, nou, "go", ver, "off in yur", pla + ". Bleh!")
     else:    
         print("The", adj, nou, "likes to", ver, "at the", pla, "by the by.")
