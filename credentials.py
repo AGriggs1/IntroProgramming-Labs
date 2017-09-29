@@ -16,13 +16,25 @@ def getFullName():
 def concatnateName():
     fullName = getFullName() #Fetch the list
     fullName = ".".join(fullName) #Join the names in the list together, replacing the list with a string
-    return fullName #Return the list
+    fullName = fullName.lower() 
+    return fullName #Return the string
 
-def getPassword(passLength):
+def getPassword():
     passwd = input("Create a new password: ")
-    while len(passwd) < passLength:
+    passwd = checkPassword(passwd, 8)
+    #while passStrength = checkPassword(passwd): #Let's not...
+    #    print("Fool of a Took! That password is feeble!")
+    #    passwd = input("Create a new password: ")
+    return passwd
+
+def checkPassword(passwd, passLength):
+    while len(passwd) < passLength or not(passwd.upper() != passwd and passwd.lower() != passwd): #DeMorgan's suckssssssssss We need (true OR NOT(true|false AND false|true)) to fire loop
         print("Fool of a Took! That password is feeble!")
-        passwd = input("Create a new password: ")
+        passwd = input("Create a new password NOTE: Your password should be upper and lower case, and contain at least 8 characters\n") #The user should know what's up
+        #print(passwd.upper(), passwd.upper() == passwd)
+        #print(passwd.lower(), passwd.lower() == passwd)
+    #print(not(passwd.upper() == passwd and passwd.lower()))
+    #print((len(passwd) < passLength and not(passwd.upper() == passwd and passwd.lower() == passwd)))
     return passwd
 
 def main(uname, passwd):
@@ -31,6 +43,6 @@ def main(uname, passwd):
     uname + "@marist.edu")
 
 uname = concatnateName()
-passwd = getPassword(8)
+passwd = getPassword()
 main(uname, passwd)
 
