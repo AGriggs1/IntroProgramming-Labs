@@ -31,7 +31,7 @@ def main(bDoLoop):
             sCommand = input("Okay, what do you want me to do with these fab numbers? ")
             #Seperate function?
             sCommand = str(sCommand).lower()
-            Result = "- oh! Sorry, I don't recognize this command. Try again." #in case all if statements fail
+            Result = "- oh! Sorry, I don't recognize this command. K we're done here LUL." #in case all if statements fail
             if sCommand == "add":
                 Result = iFirst + iSecond #Hybrid int and string, not sure what notation to use
             elif sCommand == "mult":
@@ -44,7 +44,8 @@ def main(bDoLoop):
             elif sCommand == "quit":
                 Result = "- oh, okay! I hope you had fun!"
                 bDoLoop = False
-
+            else:
+                bDoLoop = False
             #print the result
             print("That's", Result)
                 
