@@ -35,11 +35,41 @@
 #surprise > (threaten)anger
 #surprise > (joke)sadness
 
+#Row Indexes
+iAnger = 0
+iHappy = 1
+iDisgust = 2
+iFear = 3
+iSad = 4
+iSurprise = 5
+#Column Indexes
+iReward = 0
+iPunish = 1
+iThreaten = 2
+iJoke = 3
+#Constants (To make the matrix look clean), I'll flesh these out as need be
+ANGE = "Angry"
+HAPP = "Happy"
+DISG = "Disgust"
+FEAR = "Fearful"
+SADN = "Sad"
+SURP = "Surprised"
+
+#Emotion matrix
+mEmotions = [   #Rwrd  #Puni #Thrt #Joke
+                [HAPP, FEAR, ANGE, DISG], #Anger
+                [HAPP, SADN, DISG, SADN], #Happiness
+                [DISG, DISG, SURP, DISG], #Disgust
+                [DISG, FEAR, ANGE, SURP], #Fear
+                [HAPP, SADN, SADN, ANGE], #Sadness
+                [FEAR, ANGE, ANGE, SADN]  #Surprise
+                ]
+
 def Main():
     print("Initializing...")
     print("Welcome! I am Ax900012x-y, A generation IV class-Y AI. I am tasked to oversee the human interactions and machine learning techniques of other AIs.")
     print("Let us begin. Today we will be working with Kx110023x-b")
-    pEmotion = None #Let's pretend AIs are objects
+    pEmotion = HAPP
     while True:
             #get input
             #fire SetInteraction
