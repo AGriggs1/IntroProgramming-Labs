@@ -48,12 +48,13 @@ iPunish = 1
 iThreaten = 2
 iJoke = 3
 #Constants (To make the matrix look clean), I'll flesh these out as need be
-ANGE = "Angry"
-HAPP = "Happy"
-DISG = "Disgust"
-FEAR = "Fearful"
-SADN = "Sad"
-SURP = "Surprised"
+ANGE = "Grrrrrrrr!!!"
+HAPP = "Yay!"
+DISG = "You're gross."
+FEAR = "Get away from me creep!"
+SADN = "Now I'm sad. Buy me stuff"
+SURP = "!"
+
 
 #Emotion matrix
 mEmotions = [   #Rwrd  #Puni #Thrt #Joke
@@ -64,20 +65,61 @@ mEmotions = [   #Rwrd  #Puni #Thrt #Joke
                 [HAPP, SADN, SADN, ANGE], #Sadness
                 [FEAR, ANGE, ANGE, SADN]  #Surprise
                 ]
-
+kid = "Kid:"
 def Main():
     print("Initializing...")
     print("Welcome! I am Ax900012x-y, A generation IV class-Y AI. I am tasked to oversee the human interactions and machine learning techniques of other AIs.")
     print("Let us begin. Today we will be working with Kx110023x-b")
+    input("You can either choose to 'Reward', 'Punish', 'Threaten', or 'Joke' towards Kx110023x-b, or 'Kid'\nPress enter when ready.")
     pEmotion = HAPP
+    print(kid, "Hi! I'm kid! Nice to meet ya!")
     while True:
-            #get input
-            #fire SetInteraction
-            #set emotion
-            #repeat 
-        pass
+            print(kid, pEmotion)
+            sInput = input("Choose an interaction: ").lower()
+            sInput or "None"
+            print(sInput)
+            pEmotion = SetInteraction(sInput, pEmotion)
+            #repeat
+            
+def GetEmotionIndex(pEmotion):
+#I don't have the cognitive power atm to come up with a more efficient method, so I'm doing what I know works
+    if pEmotion == ANGE:
+        return iAnger
 
-def SetInteraction(sInput, pEmotions):
-    #check sInput
-    #set emotion, based on pEmotion
-    pass
+    elif pEmotion == HAPP:
+        return iHappy
+
+    elif pEmotion == DISG:
+        return iDisgust
+
+    elif pEmotion == FEAR:
+        return iFear
+
+    elif pEmotion == SADN:
+        return iSad
+
+    elif pEmotion == SURP:
+        return iSurprise
+
+    return None #This should never happen BUT
+def SetInteraction(sInput, pEmotion):
+    if sInput == "reward":
+        pEmotion = mEmotions[GetEmotionIndex(pEmotion)][iReward]
+
+    elif sInput == "punish":
+        pEmotion = mEmotions[GetEmotionIndex(pEmotion)][iPunish]
+
+    elif sInput == "threaten":
+        pEmotion = mEmotions[GetEmotionIndex(pEmotion)][iThreaten]
+
+    elif sInput == "joke":
+        pEmotion = mEmotions[GetEmotionIndex(pEmotion)][iJoke]
+
+    else:
+        print("Sorry, your interaction could not be understood.")
+    #return emotion
+    return pEmotion
+
+def ShowInteraction(sInput, pEmotion):
+    #print AI reaction / emotion, probably the latter
+    print(kid, pEmotion)
