@@ -16,9 +16,9 @@ class Product:
     def getTotalCost(self, qtyDemanded):
         return self.price * qtyDemanded
 
-    def setStock(self, qty):
+    def diminishStock(self, qty):
        #Make sure there is enough in stock to take away before taking away the defined amount
-       if self.Stock - qty > 0: self.Stock -= qty
+       if self.stock - qty > 0: self.stock -= qty
 ##===========================================================================================
 
 products = []
@@ -54,17 +54,17 @@ def main():
         if vals[0] == "quit": break
 
         prodID = int(vals[0]) 
-        count = int(vals[1]) 
+        count = int(vals[1])
 
-        if productQuantities[prodID] >= count:
-            if cash >= productPrices[prodID]:
-                productQuantities[prodID] -= count
-                cash -= productPrices[prodID] *count
-                print("You purchased", count, productNames[prodID] + ".")
+        if products[prodID].stock >= count:
+            if cash >= products[prodID].price:
+                products[prodID].diminishStock(count)
+                cash -= products[prodID].price * count
+                print("You purchased", count, products[prodID].name + ".")
                 print("You have $", "{0:.2f}".format(cash), "remaining.")
             else:
                 print("You cannot afford that product. Getouttaa mah shop ya freeloader!")
         else:
-            print("Sorry, we are sold out of", productNames[prodID])
+            print("Sorry, we are sold out of", products[prodID].name)
 
 main()
