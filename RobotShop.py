@@ -45,26 +45,37 @@ def printStock():
     print()
 
 def main():
-    cash = float(input("How much money do you have? $"))
+    try:
+        cash = float(input("How much money do you have? $"))
+    except:
+        print("Enter an actual number. Seriously, I'm going to recurse now, so don't keep this up.")
+        main()
+        #We could do a sys.exit to prevent an exception from being thrown, but... MEH
     while cash > 0:
         printStock()
 
         vals = input("Enter product ID and quantity you wish to buy: ").split(" ")
 
         if vals[0] == "quit": break
-
-        prodID = int(vals[0]) 
-        count = int(vals[1])
-
-        if products[prodID].stock >= count:
-            if cash >= products[prodID].price:
-                products[prodID].diminishStock(count)
-                cash -= products[prodID].price * count
-                print("You purchased", count, products[prodID].name + ".")
-                print("You have $", "{0:.2f}".format(cash), "remaining.")
+        try:
+            prodID = int(vals[0]) 
+            count = int(vals[1])
+        except ValueError:
+            print("Those are not numbers.")
+            continue
+        
+        try:
+            if products[prodID].stock >= count:
+                if cash >= products[prodID].price:
+                    products[prodID].diminishStock(count)
+                    cash -= products[prodID].price * count
+                    print("You purchased", count, products[prodID].name + ".")
+                    print("You have $", "{0:.2f}".format(cash), "remaining.")
+                else:
+                    print("You cannot afford that product. Getouttaa mah shop ya freeloader!")
             else:
-                print("You cannot afford that product. Getouttaa mah shop ya freeloader!")
-        else:
-            print("Sorry, we are sold out of", products[prodID].name)
-
+                print("Sorry, we are sold out of", products[prodID].name)
+        except IndexError:
+            print("The ID for the product you entered does not exist. Try again.")
+            continue
 main()
