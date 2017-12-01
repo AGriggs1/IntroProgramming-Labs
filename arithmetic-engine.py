@@ -22,28 +22,34 @@ pWindow = GraphWin("Arithmetic Engine", 600, 400)
 pWindow.setCoords(0, 0, 10, 8)
 def main(bDoLoop):
     #Define intro statement
-    sIntro = Text(Point(5, 6), "Righty! I'm going you for TWO numbers! Then you tell what to do with them!\n\n"
+    pIntro = Text(Point(5, 6), "Righty! I'm going to ask you for TWO numbers! Then you tell what to do with them!\n\n"
                                "'add' - adds the two numbers to get the sum!\n"
                                "'mult' - multiplays the two numbers to get the difference!\n"
                                "'diff' - subtracts the two numbers to get the difference!\n"
                                "'quot' - divides the two numbers to get the quotient!\n\n"
-                               "Otherwise, type 'quit' to stop playing!\n"
                                "So, uh, let's start! Click the screen, would ya?")
     #Resize                    
-    sIntro.setSize(10)
+    pIntro.setSize(10)
     #Wait for return key
-    sIntro.draw(pWindow)
+    pIntro.draw(pWindow)
     while (pWindow.getMouse() == None): pass
     
     #undraw
-    sIntro.undraw()
-    sIntro.setText("'add' - adds the two numbers to get the sum!\n"
+    pIntro.undraw()
+    pIntro.setText("'add' - adds the two numbers to get the sum!\n"
                    "mult - multiplays the two numbers to get the difference!\n"
                    "diff - subtracts the two numbers to get the difference!\n"
                    "quot - divides the two numbers to get the quotient!\n\n"
                    "quit - quits the game!")
     #redraw
-    sIntro.draw(pWindow)
+    pIntro.draw(pWindow)
+    #Define entry boxes
+    pEntryOne = Entry(Point(3, 4), 10)
+    pEntryOne.setText("#1")
+    pEntryOne.draw(pWindow)
+    pEntryTwo = Entry(Point(3 ,3), 10)
+    pEntryTwo.setText("#2")
+    pEntryTwo.draw(pWindow)
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
           "'mult' - multiplys the two numbers to get the product!\n"
