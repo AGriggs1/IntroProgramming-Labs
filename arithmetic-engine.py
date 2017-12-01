@@ -28,9 +28,22 @@ def main(bDoLoop):
                                "'diff' - subtracts the two numbers to get the difference!\n"
                                "'quot' - divides the two numbers to get the quotient!\n\n"
                                "Otherwise, type 'quit' to stop playing!\n"
-                               "So, uh, let's start!")
-                          
+                               "So, uh, let's start! Click the screen, would ya?")
+    #Resize                    
     sIntro.setSize(10)
+    #Wait for return key
+    sIntro.draw(pWindow)
+    while (pWindow.getMouse() == None): pass
+    
+    #undraw
+    sIntro.undraw()
+    sIntro.setText("'add' - adds the two numbers to get the sum!\n"
+                   "mult - multiplays the two numbers to get the difference!\n"
+                   "diff - subtracts the two numbers to get the difference!\n"
+                   "quot - divides the two numbers to get the quotient!\n\n"
+                   "quit - quits the game!")
+    #redraw
+    sIntro.draw(pWindow)
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
           "'mult' - multiplys the two numbers to get the product!\n"
@@ -38,7 +51,9 @@ def main(bDoLoop):
           "'quot' - divides the two numbers to get the quotient!\n" #Ditto
           "\nOtherwise, whenever you're done, just type 'quit' and we can stop!\n"
           "So what are we waiting for? Let's start!") #I'll have this intro here to repeat on reruns of the function in case the user misunderstood something
-    sIntro.draw(pWindow)
+    
+    
+    
     while bDoLoop:
         try:
             iFirst = input("Enter a number. Any number! ")
