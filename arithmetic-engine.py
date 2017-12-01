@@ -17,7 +17,9 @@ from graphics import *
     #quot
     #quit
 bLoop = True
-
+def drawResult(point, text, window):
+    pResult = Text(point, text)
+    pResult.draw(window)
 pWindow = GraphWin("Arithmetic Engine", 600, 400)
 pWindow.setCoords(0, 0, 10, 8)
 def main(bDoLoop):
@@ -50,6 +52,8 @@ def main(bDoLoop):
     pEntryTwo = Entry(Point(3 ,3), 10)
     pEntryTwo.setText("#2")
     pEntryTwo.draw(pWindow)
+
+    #Define Buttons
     pAdd = Rectangle(Point(5, 4), Point(7, 3))
     pTextAdd = Text(pAdd.getCenter(), "Add")
     pAdd.draw(pWindow)
@@ -66,7 +70,12 @@ def main(bDoLoop):
     pTextDiv = Text(pDiv.getCenter(), "Quot")
     pDiv.draw(pWindow)
     pTextDiv.draw(pWindow)
-                     
+    pQuit = Rectangle(Point(2, 2), Point(4, 1))
+    pTextQuit = Text(pQuit.getCenter(), "Quit")
+    pQuit.draw(pWindow)
+    pTextQuit.draw(pWindow)
+    iResult = 0
+    pResult = Text(Point(4.5, 1), str(iResult))
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
           "'mult' - multiplys the two numbers to get the product!\n"
@@ -78,38 +87,84 @@ def main(bDoLoop):
     
     
     while bDoLoop:
+        iResult = 0
+        pCoords = pWindow.getMouse()
+        pResult.setText(str(iResult))
+        pResult.undraw()
+        pResult.draw(pWindow)
+        pResult.undraw()
+        pNumOne = pEntryOne.getText()
+        pNumTwo = pEntryTwo.getText()
         try:
-            iFirst = input("Enter a number. Any number! ")
-            iSecond = input("Mm. Another! Another number! ")
-            print(iSecond + ", " + iFirst + ", those are some nice numbers!")
-            iFirst = int(iFirst)
-            iSecond = int(iSecond)
-            sCommand = input("Okay, what do you want me to do with these fab numbers? ")
+            iNumOne = int(pNumOne)
+            iNumTwo = int(pNumTwo)
+        except:
+            print("Those are not numbers!") #I KNOW THIS DOESN'T APPEAR IN THE WINDOW
+            if ((pCoords.getX() > pQuit.getP1().getX() and pCoords.getY() < pQuit.getP1().getY()) and (pCoords.getX() < pQuit.getP2().getX() and pCoords.getY() > pQuit.getP2().getY())):
+                pWindow.close()
+                bDoLoop = False
+                print("Sod one will ya?")
+                #I'm lazy. And very bitter right now.
+            continue
+
+        if ((pCoords.getX() > pAdd.getP1().getX() and pCoords.getY() < pAdd.getP1().getY()) and (pCoords.getX() < pAdd.getP2().getX() and pCoords.getY() > pAdd.getP2().getY())):
+            print("add")
+            iResult = iNumOne + iNumTwo
+            pResult.setText(str(iResult))
+            pResult.draw(pWindow)
+        elif ((pCoords.getX() > pSub.getP1().getX() and pCoords.getY() < pSub.getP1().getY()) and (pCoords.getX() < pSub.getP2().getX() and pCoords.getY() > pSub.getP2().getY())):
+            print("sub")
+            iResult = iNumOne - iNumTwo
+            pResult.setText(str(iResult))
+            pResult.draw(pWindow)
+        elif ((pCoords.getX() > pMul.getP1().getX() and pCoords.getY() < pMul.getP1().getY()) and (pCoords.getX() < pMul.getP2().getX() and pCoords.getY() > pMul.getP2().getY())):
+            print("molyneux lies again")
+            iResult = iNumOne * iNumTwo
+            pResult.setText(str(iResult))
+            pResult.draw(pWindow)
+        elif ((pCoords.getX() > pDiv.getP1().getX() and pCoords.getY() < pDiv.getP1().getY()) and (pCoords.getX() < pDiv.getP2().getX() and pCoords.getY() > pDiv.getP2().getY())):
+            print("div")
+            iResult = iNumOne / iNumTwo
+            pResult.setText(str(iResult))
+            pResult.draw(pWindow)
+        elif ((pCoords.getX() > pQuit.getP1().getX() and pCoords.getY() < pQuit.getP1().getY()) and (pCoords.getX() < pQuit.getP2().getX() and pCoords.getY() > pQuit.getP2().getY())):
+            pWindow.close()
+            bDoLoop = False
+            print("Sod one will ya?")
+        
+        #
+        #try:
+          #  iFirst = input("Enter a number. Any number! ")
+          #  iSecond = input("Mm. Another! Another number! ")
+          #  print(iSecond + ", " + iFirst + ", those are some nice numbers!")
+          #  iFirst = int(iFirst)
+          #  iSecond = int(iSecond)
+          #  sCommand = input("Okay, what do you want me to do with these fab numbers? ")
             #Seperate function?
-            sCommand = str(sCommand).lower()
-            Result = "- oh! Sorry, I don't recognize this command. K we're done here LUL." #in case all if statements fail
-            if sCommand == "add":
-                Result = iFirst + iSecond #Hybrid int and string, not sure what notation to use
-            elif sCommand == "mult":
-                Result = iFirst * iSecond
-            elif sCommand == "diff":
-                #Result = (iFirst and iSecond) - (iFirst or iSecond) #Stumbled on this last week, had to test it
-                Result = iFirst - iSecond
-            elif sCommand ==  "quot":
-                Result = iFirst / iSecond
-            elif sCommand == "quit":
-                Result = "- oh, okay! I hope you had fun!"
-                bDoLoop = False
-            else:
-                bDoLoop = False
+          #  sCommand = str(sCommand).lower()
+          #  Result = "- oh! Sorry, I don't recognize this command. K we're done here LUL." #in case all if statements fail
+          #  if sCommand == "add":
+          #      Result = iFirst + iSecond #Hybrid int and string, not sure what notation to use
+          #  elif sCommand == "mult":
+          #      Result = iFirst * iSecond
+          #  elif sCommand == "diff":
+          #      #Result = (iFirst and iSecond) - (iFirst or iSecond) #Stumbled on this last week, had to test it
+          #      Result = iFirst - iSecond
+          #  elif sCommand ==  "quot":
+          #      Result = iFirst / iSecond
+          #  elif sCommand == "quit":
+          #      Result = "- oh, okay! I hope you had fun!"
+          #      bDoLoop = False
+          #  else:
+          #      bDoLoop = False
             #print the result
-            print("That's", Result)
+          #  print("That's", Result)
                 
 
-        except: #Might be a bit early for exception handling, but I wanted to try this
-            print("Oh wait, what am I saying? Those are horrible! You did something wrong. Let's try again.") #Vague
-            bDoLoop = True
-            return bDoLoop
+       # except: #Might be a bit early for exception handling, but I wanted to try this
+       #     print("Oh wait, what am I saying? Those are horrible! You did something wrong. Let's try again.") #Vague
+       #     bDoLoop = True
+       #     return bDoLoop
     print("Thanks for playing!")
     return bDoLoop
 
