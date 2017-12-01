@@ -50,6 +50,23 @@ def main(bDoLoop):
     pEntryTwo = Entry(Point(3 ,3), 10)
     pEntryTwo.setText("#2")
     pEntryTwo.draw(pWindow)
+    pAdd = Rectangle(Point(5, 4), Point(7, 3))
+    pTextAdd = Text(pAdd.getCenter(), "Add")
+    pAdd.draw(pWindow)
+    pTextAdd.draw(pWindow)
+    pSub = Rectangle(Point(5, 3), Point(7, 2))
+    pTextSub = Text(pSub.getCenter(),"Diff")
+    pSub.draw(pWindow)
+    pTextSub.draw(pWindow)
+    pMul = Rectangle(Point(7, 4), Point(9, 3))
+    pTextMul = Text(pMul.getCenter(), "Mult")
+    pMul.draw(pWindow)
+    pTextMul.draw(pWindow)
+    pDiv = Rectangle(Point(7, 3), Point(9, 2))
+    pTextDiv = Text(pDiv.getCenter(), "Quot")
+    pDiv.draw(pWindow)
+    pTextDiv.draw(pWindow)
+                     
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
           "'mult' - multiplys the two numbers to get the product!\n"
