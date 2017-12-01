@@ -1,7 +1,10 @@
+
 # CMPT 120
 # Author: Anthony Griggs
 # 10/13/2017
 
+from graphics import *
+#import graphics for whatever reason this doesn't import anything
 #AritmeticEngine
 
 #User chooses two numbers
@@ -13,6 +16,8 @@
     #quot
     #quit
 bLoop = True
+
+window = GraphWin("Arithmetic Engine", 600, 400)
 def main(bDoLoop):
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
