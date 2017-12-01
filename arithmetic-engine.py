@@ -131,40 +131,6 @@ def main(bDoLoop):
             pWindow.close()
             bDoLoop = False
             print("Sod one will ya?")
-        
-        #
-        #try:
-          #  iFirst = input("Enter a number. Any number! ")
-          #  iSecond = input("Mm. Another! Another number! ")
-          #  print(iSecond + ", " + iFirst + ", those are some nice numbers!")
-          #  iFirst = int(iFirst)
-          #  iSecond = int(iSecond)
-          #  sCommand = input("Okay, what do you want me to do with these fab numbers? ")
-            #Seperate function?
-          #  sCommand = str(sCommand).lower()
-          #  Result = "- oh! Sorry, I don't recognize this command. K we're done here LUL." #in case all if statements fail
-          #  if sCommand == "add":
-          #      Result = iFirst + iSecond #Hybrid int and string, not sure what notation to use
-          #  elif sCommand == "mult":
-          #      Result = iFirst * iSecond
-          #  elif sCommand == "diff":
-          #      #Result = (iFirst and iSecond) - (iFirst or iSecond) #Stumbled on this last week, had to test it
-          #      Result = iFirst - iSecond
-          #  elif sCommand ==  "quot":
-          #      Result = iFirst / iSecond
-          #  elif sCommand == "quit":
-          #      Result = "- oh, okay! I hope you had fun!"
-          #      bDoLoop = False
-          #  else:
-          #      bDoLoop = False
-            #print the result
-          #  print("That's", Result)
-                
-
-       # except: #Might be a bit early for exception handling, but I wanted to try this
-       #     print("Oh wait, what am I saying? Those are horrible! You did something wrong. Let's try again.") #Vague
-       #     bDoLoop = True
-       #     return bDoLoop
     print("Thanks for playing!")
     return bDoLoop
 
