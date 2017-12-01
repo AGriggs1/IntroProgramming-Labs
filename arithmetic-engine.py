@@ -4,7 +4,8 @@
 # 10/13/2017
 
 from graphics import *
-#import graphics for whatever reason this doesn't import anything
+#import graphics #for whatever reason this doesn't import anything
+#It'll import, just nothing from the file its importing will work
 #AritmeticEngine
 
 #User chooses two numbers
@@ -17,8 +18,19 @@ from graphics import *
     #quit
 bLoop = True
 
-window = GraphWin("Arithmetic Engine", 600, 400)
+pWindow = GraphWin("Arithmetic Engine", 600, 400)
+pWindow.setCoords(0, 0, 10, 8)
 def main(bDoLoop):
+    #Define intro statement
+    sIntro = Text(Point(5, 6), "Righty! I'm going you for TWO numbers! Then you tell what to do with them!\n\n"
+                               "'add' - adds the two numbers to get the sum!\n"
+                               "'mult' - multiplays the two numbers to get the difference!\n"
+                               "'diff' - subtracts the two numbers to get the difference!\n"
+                               "'quot' - divides the two numbers to get the quotient!\n\n"
+                               "Otherwise, type 'quit' to stop playing!\n"
+                               "So, uh, let's start!")
+                          
+    sIntro.setSize(10)
     print("Right-o! I'm going to ask for two numbers from you! Then you get to choose what I do to them by typing either:\n"
           "'add' - adds the two numbers to get the sum!\n"
           "'mult' - multiplys the two numbers to get the product!\n"
@@ -26,6 +38,7 @@ def main(bDoLoop):
           "'quot' - divides the two numbers to get the quotient!\n" #Ditto
           "\nOtherwise, whenever you're done, just type 'quit' and we can stop!\n"
           "So what are we waiting for? Let's start!") #I'll have this intro here to repeat on reruns of the function in case the user misunderstood something
+    sIntro.draw(pWindow)
     while bDoLoop:
         try:
             iFirst = input("Enter a number. Any number! ")
